@@ -1,4 +1,7 @@
 import java.io.*;
+import java.util.regex.*;
+import java.util.Locale;
+import java.util.ResourceBundle;
 /**
  * Date:3/12/2022<br>
  * @author jinniu
@@ -150,13 +153,25 @@ public class Gobang
 		var gb = new Gobang();
 		gb.initBoard();
 		gb.printBoard();
-		System.out.println("请输入您下棋的座标，应以x,y的格式：");
+		//根据语言环境加载资源文件
+		var myLocale = Locale.getDefault(Locale.Category.FORMAT);
+		var bundle = ResourceBundle.getBundle("mess");
+		//提示用户输入
+		System.out.println(bundle.getString("guide"));
 		// 这是用于获取键盘输入的方法
 		var br = new BufferedReader(new InputStreamReader(System.in));
 		String inputStr = null;
 		// br.readLine()：每当在键盘上输入一行内容按回车，用户刚输入的内容将被br读取到。
 		while ((inputStr = br.readLine()) != null)
 		{
+			//加入正则判断用户输入是否合法
+			Pattern p = Pattern.compile("\\d+?,\\d+?");
+			Matcher m = p.matcher(inputStr);
+			if (!m.matches())
+			{
+				System.out.println(bundle.getString("correct"));
+				continue;
+			}
 			// 将用户输入的字符串以逗号（,）作为分隔符，分隔成2个字符串
 			String[] posStrArr = inputStr.split(",");
 			// 将2个字符串转换成用户下棋的座标
@@ -166,7 +181,7 @@ public class Gobang
 			if(gb.board[xPos - 1][yPos - 1] == "●" || gb.board[xPos - 1][yPos - 1] == "★")
 			{
 				gb.printBoard();
-				System.out.println("请输入您下棋的座标，应以x,y的格式：");
+				System.out.println(bundle.getString("guide"));
 				continue;
 			}
 			//用户下棋并计算用户输入是否导致五子连珠
@@ -192,7 +207,7 @@ public class Gobang
 			gb.countcpwin(cpx, cpy);
 			
 			gb.printBoard();
-			System.out.println("请输入您下棋的座标，应以x,y的格式：");
+			System.out.println(bundle.getString("guide"));
 		}
 	}
 }

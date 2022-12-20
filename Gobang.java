@@ -9,39 +9,39 @@ import java.util.ResourceBundle;
  */
 public class Gobang
 {
-	// ¶¨ÒåÆåÅÌµÄ´óĞ¡
+	// å®šä¹‰æ£‹ç›˜çš„å¤§å°
 	private static int BOARD_SIZE = 15;
-	// ¶¨ÒåÒ»¸ö¶şÎ¬Êı×éÀ´³äµ±ÆåÅÌ
+	// å®šä¹‰ä¸€ä¸ªäºŒç»´æ•°ç»„æ¥å……å½“æ£‹ç›˜
 	private String[][] board;
 	public void initBoard()
 	{
-		// ³õÊ¼»¯ÆåÅÌÊı×é
+		// åˆå§‹åŒ–æ£‹ç›˜æ•°ç»„
 		board = new String[BOARD_SIZE][BOARD_SIZE * 2];
-		// °ÑÃ¿¸öÔªËØ¸³Îª"©ï"£¬ÓÃÓÚÔÚ¿ØÖÆÌ¨»­³öÆåÅÌ
+		// æŠŠæ¯ä¸ªå…ƒç´ èµ‹ä¸º"â•‹"ï¼Œç”¨äºåœ¨æ§åˆ¶å°ç”»å‡ºæ£‹ç›˜
 		for (var i = 0; i < BOARD_SIZE; i++)
 		{
 			for (var j = 0; j < BOARD_SIZE * 2; j++)
 			{
-				board[i][j] = "©ï";
+				board[i][j] = "â•‹";
 			}
 		}
 	}
-	// ÔÚ¿ØÖÆÌ¨Êä³öÆåÅÌµÄ·½·¨
+	// åœ¨æ§åˆ¶å°è¾“å‡ºæ£‹ç›˜çš„æ–¹æ³•
 	public void printBoard()
 	{
-		// ´òÓ¡Ã¿¸öÊı×éÔªËØ
+		// æ‰“å°æ¯ä¸ªæ•°ç»„å…ƒç´ 
 		for (var i = 0; i < BOARD_SIZE; i++)
 		{
 			for (var j = 0; j < BOARD_SIZE * 2; j++)
 			{
-				// ´òÓ¡Êı×éÔªËØºó²»»»ĞĞ
+				// æ‰“å°æ•°ç»„å…ƒç´ åä¸æ¢è¡Œ
 				System.out.print(board[i][j]);
 			}
-			// Ã¿´òÓ¡ÍêÒ»ĞĞÊı×éÔªËØºóÊä³öÒ»¸ö»»ĞĞ·û
+			// æ¯æ‰“å°å®Œä¸€è¡Œæ•°ç»„å…ƒç´ åè¾“å‡ºä¸€ä¸ªæ¢è¡Œç¬¦
 			System.out.print("\n");
 		}
 	}
-	// ¼ÆËãÓÃ»§ÊäÈëÊÇ·ñµ¼ÖÂÎå×ÓÁ¬Öé
+	// è®¡ç®—ç”¨æˆ·è¾“å…¥æ˜¯å¦å¯¼è‡´äº”å­è¿ç 
 	public void countuserwin(int x ,int y)
 	{
 		int[] index00 = {-4, -3, -2, -1, 0 , 1, 2, 3, 4};
@@ -59,41 +59,41 @@ public class Gobang
 		
 		for (int i = 0; i < 5; i++)
 		{   
-			//ºáÊúĞ±¶Ô½Ç¹²ËÄ¸ö·½Ïò£¬×î¶àÑ¡°üº¬X,Y×ø±êµÄ9¸öµã£¬¼ÆËãÊÇ·ñ´æÔÚÁ¬Ğø5¸ö×Ó¶¼ÊÇÒ»ÖÂµÄ£¬ÊÇÔòÎå×ÓÁ¬Öé
+			//æ¨ªç«–æ–œå¯¹è§’å…±å››ä¸ªæ–¹å‘ï¼Œæœ€å¤šé€‰åŒ…å«X,Yåæ ‡çš„9ä¸ªç‚¹ï¼Œè®¡ç®—æ˜¯å¦å­˜åœ¨è¿ç»­5ä¸ªå­éƒ½æ˜¯ä¸€è‡´çš„ï¼Œæ˜¯åˆ™äº”å­è¿ç 
 			for (int j = i; j < i + 5; j++)
 			{
-				if (0 <= x + index00[j]&& x + index00[j] < BOARD_SIZE &&0 <= y + index01[j]&&y + index01[j] < BOARD_SIZE * 2&&board[x + index00[j]][y + index01[j]] == "¡ñ")
+				if (0 <= x + index00[j]&& x + index00[j] < BOARD_SIZE &&0 <= y + index01[j]&&y + index01[j] < BOARD_SIZE * 2&&board[x + index00[j]][y + index01[j]] == "â—")
 				{
 					sum0++;
 				}
-				if (0 <= x + index10[j]&& x + index10[j] < BOARD_SIZE &&0 <= y + index11[j]&&y + index11[j] < BOARD_SIZE * 2&&board[x + index10[j]][y + index11[j]] == "¡ñ")
+				if (0 <= x + index10[j]&& x + index10[j] < BOARD_SIZE &&0 <= y + index11[j]&&y + index11[j] < BOARD_SIZE * 2&&board[x + index10[j]][y + index11[j]] == "â—")
 				{
 					sum1++;
 				}
-			    if (0 <= x + index20[j]&& x + index20[j] < BOARD_SIZE &&0 <= y + index21[j]&&y + index21[j] < BOARD_SIZE * 2&&board[x + index20[j]][y + index21[j]] == "¡ñ")
+			    if (0 <= x + index20[j]&& x + index20[j] < BOARD_SIZE &&0 <= y + index21[j]&&y + index21[j] < BOARD_SIZE * 2&&board[x + index20[j]][y + index21[j]] == "â—")
 				{
 					sum2++;
 				}
-				if (0 <= x + index30[j]&& x + index30[j] < BOARD_SIZE &&0 <= y + index31[j]&&y + index31[j] < BOARD_SIZE * 2&&board[x + index30[j]][y + index31[j]] == "¡ñ")
+				if (0 <= x + index30[j]&& x + index30[j] < BOARD_SIZE &&0 <= y + index31[j]&&y + index31[j] < BOARD_SIZE * 2&&board[x + index30[j]][y + index31[j]] == "â—")
 				{
 					sum3++;
 				}
 			}
-			//sum0,sum1,sum2,sum3 4¸öÊıÓĞÒ»¸öÎª5ÔòÎå×ÓÁ¬Öé£¬´òÓ¡³öyou win;
+			//sum0,sum1,sum2,sum3 4ä¸ªæ•°æœ‰ä¸€ä¸ªä¸º5åˆ™äº”å­è¿ç ï¼Œæ‰“å°å‡ºyou win;
 			if (sum0 == 5 || sum1 == 5 || sum2 == 5 || sum3 ==5)
 			{
 					System.out.println("you win!");
 					printBoard();
 					System.exit(0);
 			}
-			//Ã»ÓĞÎå×ÓÁ¬ÖéÔò¼ÆÊıÈ«²¿¹éÁã½øÈëÏÂÒ»ÂÖ
+			//æ²¡æœ‰äº”å­è¿ç åˆ™è®¡æ•°å…¨éƒ¨å½’é›¶è¿›å…¥ä¸‹ä¸€è½®
 			sum0 = 0;
 			sum1 = 0;
 			sum2 = 0;
 			sum3 = 0;
 		}
 	}
-	//¼ÆËãÏÂ¼ÆËã»úÏÂÆåºóÊÇ·ñµ¼ÖÂÎå×ÓÁ¬Öé
+	//è®¡ç®—ä¸‹è®¡ç®—æœºä¸‹æ£‹åæ˜¯å¦å¯¼è‡´äº”å­è¿ç 
 	public void countcpwin(int x ,int y)
 	{
 		int[] index00 = {-4, -3, -2, -1, 0 , 1, 2, 3, 4};
@@ -111,34 +111,34 @@ public class Gobang
 		
 		for (int i = 0; i < 5; i++)
 		{   
-			//ºáÊúĞ±¶Ô½Ç¹²ËÄ¸ö·½Ïò£¬×î¶àÑ¡°üº¬X,Y×ø±êµÄ9¸öµã£¬¼ÆËãÊÇ·ñ´æÔÚÁ¬Ğø5¸ö×Ó¶¼ÊÇÒ»ÖÂµÄ£¬ÊÇÔòÎå×ÓÁ¬Öé
+			//æ¨ªç«–æ–œå¯¹è§’å…±å››ä¸ªæ–¹å‘ï¼Œæœ€å¤šé€‰åŒ…å«X,Yåæ ‡çš„9ä¸ªç‚¹ï¼Œè®¡ç®—æ˜¯å¦å­˜åœ¨è¿ç»­5ä¸ªå­éƒ½æ˜¯ä¸€è‡´çš„ï¼Œæ˜¯åˆ™äº”å­è¿ç 
 			for (int j = i; j < i + 5; j++)
 			{
-				if (0 <= x + index00[j]&& x + index00[j] < BOARD_SIZE &&0 <= y + index01[j]&&y + index01[j] < BOARD_SIZE * 2&&board[x + index00[j]][y + index01[j]] == "¡ï")
+				if (0 <= x + index00[j]&& x + index00[j] < BOARD_SIZE &&0 <= y + index01[j]&&y + index01[j] < BOARD_SIZE * 2&&board[x + index00[j]][y + index01[j]] == "â˜…")
 				{
 					sum0++;
 				}
-				if (0 <= x + index10[j]&& x + index10[j] < BOARD_SIZE &&0 <= y + index11[j]&&y + index11[j] < BOARD_SIZE * 2&&board[x + index10[j]][y + index11[j]] == "¡ï")
+				if (0 <= x + index10[j]&& x + index10[j] < BOARD_SIZE &&0 <= y + index11[j]&&y + index11[j] < BOARD_SIZE * 2&&board[x + index10[j]][y + index11[j]] == "â˜…")
 				{
 					sum1++;
 				}
-			    if (0 <= x + index20[j]&& x + index20[j] < BOARD_SIZE &&0 <= y + index21[j]&&y + index21[j] < BOARD_SIZE * 2&&board[x + index20[j]][y + index21[j]] == "¡ï")
+			    if (0 <= x + index20[j]&& x + index20[j] < BOARD_SIZE &&0 <= y + index21[j]&&y + index21[j] < BOARD_SIZE * 2&&board[x + index20[j]][y + index21[j]] == "â˜…")
 				{
 					sum2++;
 				}
-				if (0 <= x + index30[j]&& x + index30[j] < BOARD_SIZE &&0 <= y + index31[j]&&y + index31[j] < BOARD_SIZE * 2&&board[x + index30[j]][y + index31[j]] == "¡ï")
+				if (0 <= x + index30[j]&& x + index30[j] < BOARD_SIZE &&0 <= y + index31[j]&&y + index31[j] < BOARD_SIZE * 2&&board[x + index30[j]][y + index31[j]] == "â˜…")
 				{
 					sum3++;
 				}
 			}
-			//sum0,sum1,sum2,sum3 4¸öÊıÓĞÒ»¸öÎª5ÔòÎå×ÓÁ¬Öé£¬´òÓ¡³öyou win;
+			//sum0,sum1,sum2,sum3 4ä¸ªæ•°æœ‰ä¸€ä¸ªä¸º5åˆ™äº”å­è¿ç ï¼Œæ‰“å°å‡ºyou win;
 			if (sum0 == 5 || sum1 == 5 || sum2 == 5 || sum3 ==5)
 			{
 					System.out.println("cp win!");
 					printBoard();
 					System.exit(0);
 			}
-			//Ã»ÓĞÎå×ÓÁ¬ÖéÔò¼ÆÊıÈ«²¿¹éÁã½øÈëÏÂÒ»ÂÖ
+			//æ²¡æœ‰äº”å­è¿ç åˆ™è®¡æ•°å…¨éƒ¨å½’é›¶è¿›å…¥ä¸‹ä¸€è½®
 			sum0 = 0;
 			sum1 = 0;
 			sum2 = 0;
@@ -153,18 +153,18 @@ public class Gobang
 		var gb = new Gobang();
 		gb.initBoard();
 		gb.printBoard();
-		//¸ù¾İÓïÑÔ»·¾³¼ÓÔØ×ÊÔ´ÎÄ¼ş
+		//æ ¹æ®è¯­è¨€ç¯å¢ƒåŠ è½½èµ„æºæ–‡ä»¶
 		var myLocale = Locale.getDefault(Locale.Category.FORMAT);
 		var bundle = ResourceBundle.getBundle("mess");
-		//ÌáÊ¾ÓÃ»§ÊäÈë
+		//æç¤ºç”¨æˆ·è¾“å…¥
 		System.out.println(bundle.getString("guide"));
-		// ÕâÊÇÓÃÓÚ»ñÈ¡¼üÅÌÊäÈëµÄ·½·¨
+		// è¿™æ˜¯ç”¨äºè·å–é”®ç›˜è¾“å…¥çš„æ–¹æ³•
 		var br = new BufferedReader(new InputStreamReader(System.in));
 		String inputStr = null;
-		// br.readLine()£ºÃ¿µ±ÔÚ¼üÅÌÉÏÊäÈëÒ»ĞĞÄÚÈİ°´»Ø³µ£¬ÓÃ»§¸ÕÊäÈëµÄÄÚÈİ½«±»br¶ÁÈ¡µ½¡£
+		// br.readLine()ï¼šæ¯å½“åœ¨é”®ç›˜ä¸Šè¾“å…¥ä¸€è¡Œå†…å®¹æŒ‰å›è½¦ï¼Œç”¨æˆ·åˆšè¾“å…¥çš„å†…å®¹å°†è¢«brè¯»å–åˆ°ã€‚
 		while ((inputStr = br.readLine()) != null)
 		{
-			//¼ÓÈëÕıÔòÅĞ¶ÏÓÃ»§ÊäÈëÊÇ·ñºÏ·¨
+			//åŠ å…¥æ­£åˆ™åˆ¤æ–­ç”¨æˆ·è¾“å…¥æ˜¯å¦åˆæ³•
 			Pattern p = Pattern.compile("\\d+?,\\d+?");
 			Matcher m = p.matcher(inputStr);
 			if (!m.matches())
@@ -172,23 +172,32 @@ public class Gobang
 				System.out.println(bundle.getString("correct"));
 				continue;
 			}
-			// ½«ÓÃ»§ÊäÈëµÄ×Ö·û´®ÒÔ¶ººÅ£¨,£©×÷Îª·Ö¸ô·û£¬·Ö¸ô³É2¸ö×Ö·û´®
-			String[] posStrArr = inputStr.split(",");
-			// ½«2¸ö×Ö·û´®×ª»»³ÉÓÃ»§ÏÂÆåµÄ×ù±ê
-			var xPos = Integer.parseInt(posStrArr[0]);
-			var yPos = Integer.parseInt(posStrArr[1]);
-			// °Ñ¶ÔÓ¦µÄÊı×éÔªËØ¸³Îª"¡ñ"£¬Èç¹ûÕâ¸ö×ø±êÒÑ¾­ÏÂ¹ıÆåÔòÔÙ´ÎÌáĞÑÓÃ»§Ìá½»×ø±ê²¢Ìø¹ıÏÂÃæµÄ²Ù×÷£¬Ïàµ±ÓÚÕâ²½²»Ëã
-			if(gb.board[xPos - 1][yPos - 1] == "¡ñ" || gb.board[xPos - 1][yPos - 1] == "¡ï")
+			// å°†ç”¨æˆ·è¾“å…¥çš„å­—ç¬¦ä¸²ä»¥é€—å·ï¼ˆ,ï¼‰ä½œä¸ºåˆ†éš”ç¬¦ï¼Œåˆ†éš”æˆ2ä¸ªå­—ç¬¦ä¸²
+			try
 			{
-				gb.printBoard();
-				System.out.println(bundle.getString("guide"));
+				String[] posStrArr = inputStr.split(",");
+				// å°†2ä¸ªå­—ç¬¦ä¸²è½¬æ¢æˆç”¨æˆ·ä¸‹æ£‹çš„åº§æ ‡
+				var xPos = Integer.parseInt(posStrArr[0]);
+				var yPos = Integer.parseInt(posStrArr[1]);
+				// æŠŠå¯¹åº”çš„æ•°ç»„å…ƒç´ èµ‹ä¸º"â—"ï¼Œå¦‚æœè¿™ä¸ªåæ ‡å·²ç»ä¸‹è¿‡æ£‹åˆ™å†æ¬¡æé†’ç”¨æˆ·æäº¤åæ ‡å¹¶è·³è¿‡ä¸‹é¢çš„æ“ä½œï¼Œç›¸å½“äºè¿™æ­¥ä¸ç®—
+				if(gb.board[xPos - 1][yPos - 1] == "â—" || gb.board[xPos - 1][yPos - 1] == "â˜…")
+				{
+					gb.printBoard();
+					System.out.println(bundle.getString("guide"));
+					continue;
+				}
+				//ç”¨æˆ·ä¸‹æ£‹å¹¶è®¡ç®—ç”¨æˆ·è¾“å…¥æ˜¯å¦å¯¼è‡´äº”å­è¿ç 
+				gb.board[xPos - 1][yPos - 1] = "â—";
+				gb.countuserwin(xPos - 1, yPos - 1);
+			}
+			catch (Exception e)
+			{
+				System.out.println("æ‚¨è¾“å…¥çš„åæ ‡ä¸åˆæ³•ï¼Œè¯·é‡æ–°è¾“å…¥ï¼Œä¸‹æ£‹åæ ‡åº”ä»¥x,yçš„æ ¼å¼");
 				continue;
 			}
-			//ÓÃ»§ÏÂÆå²¢¼ÆËãÓÃ»§ÊäÈëÊÇ·ñµ¼ÖÂÎå×ÓÁ¬Öé
-			gb.board[xPos - 1][yPos - 1] = "¡ñ";
-			gb.countuserwin(xPos - 1, yPos - 1);
+
 			
-			//¼ÆËã»ú¿ªÊ¼Ëæ»úÏÂÆå£¬Òª±£ÕÏ²»ÄÜ¸²¸Çµ½ÒÑÏÂ¹ıÆåµÄ×ø±ê£¬×ø±êÒÑ¾­ÏÂ¹ıÔòÔÙËæ»úÉú³É×ø±ê,²¢¼ÆËã¼ÆËã»úÏÂÆåÖª·ñµ¼ÖÂÎå×ÓÁ¬Öé
+			//è®¡ç®—æœºå¼€å§‹éšæœºä¸‹æ£‹ï¼Œè¦ä¿éšœä¸èƒ½è¦†ç›–åˆ°å·²ä¸‹è¿‡æ£‹çš„åæ ‡ï¼Œåæ ‡å·²ç»ä¸‹è¿‡åˆ™å†éšæœºç”Ÿæˆåæ ‡,å¹¶è®¡ç®—è®¡ç®—æœºä¸‹æ£‹çŸ¥å¦å¯¼è‡´äº”å­è¿ç 
 			int cpx = -1;
 			int cpy = -1;
 			int cpover = 0;
@@ -198,9 +207,9 @@ public class Gobang
 				cpy = (int)(Math.random() * BOARD_SIZE * 2);
 				//System.out.println(cpx);
 				//System.out.println(cpy);
-				if(gb.board[cpx][cpy] != "¡ñ" && gb.board[cpx][cpy] != "¡ï")
+				if(gb.board[cpx][cpy] != "â—" && gb.board[cpx][cpy] != "â˜…")
 				{
-					gb.board[cpx][cpy] = "¡ï";
+					gb.board[cpx][cpy] = "â˜…";
 					cpover++;
 				}
 			}
